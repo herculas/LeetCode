@@ -10,6 +10,7 @@ import java.util.List;
 public class ThreeSum_15 {
     public static List<List<Integer>> threeSum(int[] nums){
         Arrays.sort(nums);
+
         List<List<Integer>> res;
         res = new ArrayList<>();
 
