@@ -23,3 +23,6 @@ hs_err_pid*
 
 # IntelliJ IDEA .idea files
 .idea/
+
+# Mac OS .DS_Store files
+.DS_Store
