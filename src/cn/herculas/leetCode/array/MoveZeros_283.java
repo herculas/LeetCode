@@ -1,4 +1,4 @@
-package cn.herculas.leetCode;
+package cn.herculas.leetCode.array;
 
 public class MoveZeros_283 {
     public void moveZeroes(int[] nums) {

@@ -1,4 +1,4 @@
-package cn.herculas.leetCode;
+package cn.herculas.leetCode.array;
 
 public class BestTimeToBuyAndSellStock_122 {
     public int maxProfit(int[] prices) {

@@ -1,4 +1,4 @@
-package cn.herculas.leetCode;
+package cn.herculas.leetCode.array;
 
 public class RotateArray_189 {
     public void rotate(int[] nums, int k) {

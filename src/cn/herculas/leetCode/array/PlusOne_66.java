@@ -1,4 +1,4 @@
-package cn.herculas.leetCode;
+package cn.herculas.leetCode.array;
 
 public class PlusOne_66 {
     public int[] plusOne(int[] digits) {

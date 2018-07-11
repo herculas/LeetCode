@@ -1,4 +1,4 @@
-package cn.herculas.leetCode;
+package cn.herculas.leetCode.array;
 
 /**
  * Created by wurah on 2017/7/5.
