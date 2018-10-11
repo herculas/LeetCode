@@ -4,7 +4,7 @@ public class MinimumWindowSubstring_76 {
     public String minWindow(String s, String t) {
         if (s == null || t == null) return "";
 
-        // total number of character in p to be contained in s
+        // total number of character in t to be contained in s
         int countToBeContained = t.length(), minLen = Integer.MAX_VALUE, startIndex = -1;
 
         // calculate the number of each character to be contained in S

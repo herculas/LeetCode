@@ -14,7 +14,7 @@ public class MergeTwoSortedLists_21 {
         ListNode pointer2 = l2;
 
         ListNode merged = new ListNode(0);
-        ListNode pointerMerged =merged;
+        ListNode pointerMerged = merged;
 
         while (pointer1 != null || pointer2 != null) {
 
@@ -44,16 +44,13 @@ public class MergeTwoSortedLists_21 {
                     pointerMerged.next = new ListNode(pointer2.val);
                     pointerMerged = pointerMerged.next;
                     pointer2 = pointer2.next;
-
-
                 }
-            } else if (pointer1 == null) {
 
+            } else if (pointer1 == null) {
                 pointerMerged.next = pointer2;
                 pointer2 = null;
 
             } else {
-
                 pointerMerged.next = pointer1;
                 pointer1 = null;
 
@@ -81,9 +78,7 @@ public class MergeTwoSortedLists_21 {
         l23.next = null;
 
         MergeTwoSortedLists_21 mergeTwoSortedLists_21 = new MergeTwoSortedLists_21();
-        ListNode head = mergeTwoSortedLists_21.mergeTwoLists(l11, l21);
-
-        ListNode temp = head;
+        ListNode temp = mergeTwoSortedLists_21.mergeTwoLists(l11, l21);
         while (temp != null) {
             System.out.println(temp.val);
             temp = temp.next;
