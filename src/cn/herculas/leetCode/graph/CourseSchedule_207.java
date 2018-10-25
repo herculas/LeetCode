@@ -1,60 +1,52 @@
 package cn.herculas.leetCode.graph;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class CourseSchedule_207 {
+
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int[] heads = new int[numCourses];
-        int[] degrees = new int[numCourses];
 
-        for (int head: heads) {
-            head = -1;
-        }
-        for (int degree: degrees) {
-            degree = 0;
+        // 课程表初始化
+        List<Set> courses = new ArrayList<>();
+        for (int i = 0; i < numCourses; i++) {
+            courses.add(new HashSet<Integer>());
         }
 
-        List<Integer> points = new ArrayList<>();
-        List<Integer> args = new ArrayList<>();
-
-        int from, to, count = 0;
-        int size = prerequisites.length;
-
+        // 记录每个课程的后续课程
         for (int[] prerequisite : prerequisites) {
-            to = prerequisite[0];
-            from = prerequisite[1];
-
-            degrees[from]++;
-            args.add(heads[to]);
-            points.add(from);
-            heads[to] = count++;
+            Set set = courses.get(prerequisite[1]);
+            set.add(prerequisite[0]);
         }
 
-        LinkedList<Integer> queue = new LinkedList<>();
+        // 记录每门课程的先修课程的数量
+        int[] pre = new int[numCourses];
         for (int i = 0; i < numCourses; i++) {
-            if (degrees[i] == 0) {
-                queue.add(i);
-            }
-
-            while (!queue.isEmpty()) {
-                to = queue.getFirst();
-                from = heads[to];
-                queue.pop();
-
-                while (from != -1) {
-                    if (--degrees[points.get(from)] == 0) {
-                        queue.push(points.get(from));
-                    }
-                    from = args.get(from);
-                }
+            Set set = courses.get(i);
+            for (Object index : set) {
+                pre[(int) index]++;
             }
         }
 
+        // 广度优先搜索 BFS
         for (int i = 0; i < numCourses; i++) {
-            if (degrees[i] > 0) {
+
+            // 寻找最先修课程
+            int j = 0;
+            for (; j < numCourses; j++) {
+                if (pre[j] == 0)
+                    break;
+            }
+
+            // 如果没有最先修课程，则存在环路
+            if (j == numCourses)
                 return false;
+
+            pre[j] = -1;
+
+            // 将以 j 为最先修课程的所有后续课程的先修数组减 1
+            Set tempSet = courses.get(j);
+            for (Object index : tempSet) {
+                pre[(int) index]--;
             }
         }
 
