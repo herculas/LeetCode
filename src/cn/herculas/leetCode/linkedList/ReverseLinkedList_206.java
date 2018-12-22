@@ -2,30 +2,21 @@ package cn.herculas.leetCode.linkedList;
 
 public class ReverseLinkedList_206 {
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
-        }
 
-        ListNode pre = head;
-        ListNode now = head.next;
-        ListNode suf;
-
-        if (head.next == null) {
+        if (head == null || head.next == null) {
             return head;
-        } else {
-            suf = head.next.next;
         }
 
-        head.next = null;
-        while (suf != null) {
-            now.next = pre;
+        ListNode pointer = head;
 
-            pre = now;
-            now = suf;
-            suf = suf.next;
+        while (pointer.next != null) {
+            ListNode temp = pointer.next;
+            pointer.next = pointer.next.next;
+
+            temp.next = head;
+            head = temp;
         }
-        now.next = pre;
-        return now;
+        return head;
     }
 
     public static void main(String[] args) {
