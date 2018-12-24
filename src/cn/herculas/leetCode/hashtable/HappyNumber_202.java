@@ -1,4 +1,4 @@
-package cn.herculas.leetCode.mathematics;
+package cn.herculas.leetCode.hashtable;
 
 import java.util.HashSet;
 import java.util.Set;
