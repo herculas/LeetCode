@@ -3,24 +3,26 @@ package cn.herculas.leetCode.tree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryTreeInorderTraversal_94 {
-    public List<Integer> inorderTraversal(TreeNode root) {
+public class BinaryTreePostorderTraversal_145 {
+    public List<Integer> postorderTraversal(TreeNode root) {
 
         if (root == null)
             return new ArrayList<>();
 
-        List<Integer> left = this.inorderTraversal(root.left);
-        List<Integer> right = this.inorderTraversal(root.right);
+        List<Integer> left = this.postorderTraversal(root.left);
+        List<Integer> right = this.postorderTraversal(root.right);
 
         List<Integer> result = new ArrayList<>();
+
         result.addAll(left);
-        result.add(root.val);
         result.addAll(right);
+        result.add(root.val);
 
         return result;
     }
 
     public static void main(String[] args) {
+
         TreeNode t1 = new TreeNode(1);
         TreeNode t2 = new TreeNode(2);
         TreeNode t3 = new TreeNode(3);
@@ -31,8 +33,7 @@ public class BinaryTreeInorderTraversal_94 {
         t2.left = t3;
         t2.right = null;
 
-        BinaryTreeInorderTraversal_94 binaryTreeInorderTraversal_94 = new BinaryTreeInorderTraversal_94();
-        System.out.println(binaryTreeInorderTraversal_94.inorderTraversal(t1));
-
+        BinaryTreePostorderTraversal_145 binaryTreePostorderTraversal_145 = new BinaryTreePostorderTraversal_145();
+        System.out.println(binaryTreePostorderTraversal_145.postorderTraversal(t1));
     }
 }
