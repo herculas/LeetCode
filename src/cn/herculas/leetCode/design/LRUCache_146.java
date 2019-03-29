@@ -1,23 +1,38 @@
 package cn.herculas.leetCode.design;
 
-import java.util.HashMap;
-import java.util.Queue;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 class LRUCache_146 {
 
-    private HashMap<Integer, Integer> cacheMap;
-    private Queue<Integer>
+    private int capacity;
+    private Map<Integer, Integer> map;
 
     public LRUCache_146(int capacity) {
-
+        this.capacity = capacity;
+        this.map = new LinkedHashMap<>();
     }
 
     public int get(int key) {
-
+        if (this.map.containsKey(key)) {
+            int value = map.get(key);
+            map.remove(key);
+            map.put(key, value);
+            return value;
+        } else {
+            return -1;
+        }
     }
 
     public void put(int key, int value) {
-
+        if (this.map.containsKey(key)) {
+            map.remove(key);
+        }
+        if (map.size() >= capacity) {
+            map.remove(map.keySet().iterator().next());
+        }
+        map.put(key, value);
     }
 
     public static void main(String[] args) {
