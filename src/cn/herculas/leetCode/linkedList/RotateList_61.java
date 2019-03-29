@@ -2,12 +2,9 @@ package cn.herculas.leetCode.linkedList;
 
 public class RotateList_61 {
     public ListNode rotateRight(ListNode head, int k) {
+        if (head == null || head.next == null || k == 0) return head;
+
         int count = 0;
-
-        if (head == null || head.next == null || k == 0) {
-            return head;
-        }
-
         ListNode pointer = head;
         while (pointer != null) {
             count++;
@@ -15,7 +12,6 @@ public class RotateList_61 {
         }
 
         int cut = k % count;
-
         if (cut == 0) {
             return head;
         } else {
@@ -25,7 +21,6 @@ public class RotateList_61 {
 
     private ListNode singleRotate(ListNode head, int width) {
         ListNode iter = head;
-
         for (int i = 0; i < width - 1; i++) {
             iter = iter.next;
         }

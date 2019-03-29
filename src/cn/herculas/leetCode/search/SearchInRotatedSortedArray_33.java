@@ -2,12 +2,8 @@ package cn.herculas.leetCode.search;
 
 public class SearchInRotatedSortedArray_33 {
     public int search(int[] nums, int target) {
+        if (nums.length == 0) return -1;
 
-        if (nums.length == 0) {
-            return -1;
-        }
-        // Find rotated point
-        // Use Binary Search
         int left = 0;
         int right = nums.length - 1;
 
@@ -21,12 +17,7 @@ public class SearchInRotatedSortedArray_33 {
             }
         }
 
-        System.out.println("left " + left + ", right " + right);
-        // Define the part which the target belongs
-
-        if (left + 1 != right) {
-            return this.BinarySearch(nums, left, right, target);
-        }
+        if (left + 1 != right) return this.BinarySearch(nums, left, right, target);
 
         if (target >= nums[0] && target <= nums[left]) {
             return this.BinarySearch(nums, 0, left, target);
@@ -56,9 +47,9 @@ public class SearchInRotatedSortedArray_33 {
 
     public static void main(String[] args) {
 
-        int[] nums = {1, 3, 5};
+        int[] nums = {4, 5, 6, 7, 1, 2};
 
         SearchInRotatedSortedArray_33 searchInRotatedSortedArray_33 = new SearchInRotatedSortedArray_33();
-        System.out.println(searchInRotatedSortedArray_33.search(nums, 3));
+        System.out.println(searchInRotatedSortedArray_33.search(nums, 5));
     }
 }

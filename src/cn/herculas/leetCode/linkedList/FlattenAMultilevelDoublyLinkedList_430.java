@@ -1,7 +1,5 @@
 package cn.herculas.leetCode.linkedList;
 
-import java.util.Stack;
-
 class Node {
     public int val;
     public Node prev;

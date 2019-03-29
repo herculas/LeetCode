@@ -1,10 +1,10 @@
 package cn.herculas.leetCode.mathematics;
 
-import java.util.Arrays;
-
 public class MultiplyStrings_43 {
     public String multiply(String num1, String num2) {
+
         int[] value = new int[num1.length() + num2.length()];
+
         for (int i = 0; i < num1.length(); i++) {
             for (int j = 0; j < num2.length(); j++) {
                 value[i + j + 1] += (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
@@ -19,15 +19,10 @@ public class MultiplyStrings_43 {
         }
 
         int beginIndex = 0;
-        while (beginIndex < value.length - 1 && value[beginIndex] == 0) {
-            beginIndex++;
-        }
+        while (beginIndex < value.length - 1 && value[beginIndex] == 0) beginIndex++;
 
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = beginIndex; i < value.length; i++) {
-            stringBuilder.append(value[i]);
-        }
-
+        for (int i = beginIndex; i < value.length; i++) stringBuilder.append(value[i]);
         return stringBuilder.toString();
     }
 

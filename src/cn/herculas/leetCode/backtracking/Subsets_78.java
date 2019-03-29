@@ -8,7 +8,6 @@ public class Subsets_78 {
     private List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> subsets(int[] nums) {
-
         this.generateSubset(nums);
         return this.result;
     }
@@ -20,7 +19,6 @@ public class Subsets_78 {
             if (!this.result.contains(integers)) {
                 this.result.add(integers);
             }
-
         } else {
             for (int num: nums) {
                 integers.add(num);

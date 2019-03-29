@@ -2,27 +2,18 @@ package cn.herculas.leetCode.tree;
 
 public class BinaryTreeMaximumPathSum_124 {
 
-    private int max;
-    /**
-     * 二叉树中某一个节点为根结点的最大路径和
-     * 等于该节点的节点值加上左子树和右子树的最大路径和（若为负取0）
-     */
+    private int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
-        this.max = Integer.MIN_VALUE;
         this.recursive(root);
         return this.max;
     }
 
     private int recursive(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
+        if (root == null) return 0;
 
         int left = Math.max(0, this.recursive(root.left));
         int right = Math.max(0, this.recursive(root.right));
-
         this.max = Math.max(this.max, root.val + left + right);
-
         return Math.max(root.val, root.val + Math.max(left, right));
     }
 
