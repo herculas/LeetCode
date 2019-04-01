@@ -2,27 +2,14 @@ package cn.herculas.leetCode.tree;
 
 public class SymmetricTree_101 {
     public boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-
-        return isMirror(root.left, root.right);
+        return this.isSymmetric(root, root);
     }
 
-    private boolean isMirror (TreeNode left, TreeNode right) {
-        if (left == null && right == null) {
-            return true;
-        }
-        if (left == null || right == null) {
-            return false;
-        }
-
-        if (left.val != right.val) {
-            return false;
-        }
-
-        return isMirror(left.left, right.right) & isMirror(left.right, right.left);
-
+    private boolean isSymmetric(TreeNode root1, TreeNode root2) {
+        if (root1 == null && root2 == null) return true;
+        if (root1 == null || root2 == null) return false;
+        if (root1.val != root2.val) return false;
+        return this.isSymmetric(root1.left, root2.right) && this.isSymmetric(root1.right, root2.left);
     }
 
     public static void main(String[] args) {
@@ -34,13 +21,10 @@ public class SymmetricTree_101 {
         TreeNode t16 = new TreeNode(4);
         TreeNode t17 = new TreeNode(3);
 
-
         t11.left = t12;
         t11.right = t13;
-
         t12.left = t14;
         t12.right = t15;
-
         t13.left = t16;
         t13.right = t17;
 
@@ -52,11 +36,11 @@ public class SymmetricTree_101 {
 
         t21.left = t22;
         t21.right = t23;
-
         t22.right = t24;
-
         t23.right = t25;
+
         SymmetricTree_101 symmetricTree_101 = new SymmetricTree_101();
+        System.out.println(symmetricTree_101.isSymmetric(t11));
         System.out.println(symmetricTree_101.isSymmetric(t21));
     }
 }

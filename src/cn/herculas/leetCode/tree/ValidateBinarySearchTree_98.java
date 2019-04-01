@@ -2,55 +2,25 @@ package cn.herculas.leetCode.tree;
 
 public class ValidateBinarySearchTree_98 {
     public boolean isValidBST(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-
-        if (root.left == null && root.right == null) {
-            return true;
-        } else if (root.left == null && root.right != null) {
-            return isValidBST(root.right) & isMoreThanRoot(root.val, root.right);
-        } else if (root.left != null && root.right == null) {
-            return isValidBST(root.left) & isLessThanRoot(root.val, root.left);
-        } else if (root.left != null && root.right != null) {
-            return isValidBST(root.right) & isMoreThanRoot(root.val, root.right) &
-                    isValidBST(root.left) & isLessThanRoot(root.val, root.left);
-        }
-        return true;
+        if (root == null) return true;
+        boolean result = true;
+        if (root.left != null) result = this.isValidBST(root.left) && this.isLessThanRoot(root.val, root.left);
+        if (root.right != null) result = result && this.isValidBST(root.right) && this.isMoreThanRoot(root.val, root.right);
+        return result;
     }
 
-    private boolean isLessThanRoot (int value, TreeNode root) {
-        if (value <= root.val) {
-            return false;
-        }
-
-        if (root.left == null && root.right == null) {
-            return true;
-        } else if (root.left == null && root.right != null) {
-            return isLessThanRoot(value, root.right);
-        } else if (root.left != null && root.right == null) {
-            return isLessThanRoot(value, root.left);
-        } else if (root.left != null && root.right != null) {
-            return isLessThanRoot(value, root.right) & isLessThanRoot(value, root.left);
-        }
-        return true;
+    private boolean isLessThanRoot(int val, TreeNode root) {
+        boolean result = root.val < val;
+        if (root.left != null) result = result && this.isLessThanRoot(val, root.left);
+        if (root.right != null) result = result && this.isLessThanRoot(val, root.right);
+        return result;
     }
 
-    private boolean isMoreThanRoot (int value, TreeNode root) {
-        if (value >= root.val) {
-            return false;
-        }
-
-        if (root.left == null && root.right == null) {
-            return true;
-        } else if (root.left == null && root.right != null) {
-            return isMoreThanRoot(value, root.right);
-        } else if (root.left != null && root.right == null) {
-            return isMoreThanRoot(value, root.left);
-        } else if (root.left != null && root.right != null) {
-            return isMoreThanRoot(value, root.right) & isMoreThanRoot(value, root.left);
-        }
-        return true;
+    private boolean isMoreThanRoot(int val, TreeNode root) {
+        boolean result = root.val > val;
+        if (root.left != null) result = result && this.isMoreThanRoot(val, root.left);
+        if (root.right != null) result = result && this.isMoreThanRoot(val, root.right);
+        return result;
     }
 
     public static void main(String[] args) {
@@ -73,7 +43,16 @@ public class ValidateBinarySearchTree_98 {
         t21.left = t22;
         t21.right = t23;
 
+        TreeNode t31 = new TreeNode(5);
+        TreeNode t32 = new TreeNode(14);
+        TreeNode t33 = new TreeNode(1);
+
+        t31.left = t32;
+        t32.left = t33;
+
         ValidateBinarySearchTree_98 validateBinarySearchTree_98 = new ValidateBinarySearchTree_98();
+        System.out.println(validateBinarySearchTree_98.isValidBST(t11));
         System.out.println(validateBinarySearchTree_98.isValidBST(t21));
+        System.out.println(validateBinarySearchTree_98.isValidBST(t31));
     }
 }

@@ -2,10 +2,7 @@ package cn.herculas.leetCode.string;
 
 public class ValidPalindrome_125 {
     public boolean isPalindrome (String s) {
-        if (s.length() == 0 || s.length() == 1) {
-            return true;
-        }
-
+        if (s.length() == 0 || s.length() == 1) return true;
         s = s.toLowerCase();
 
         int indexLeft = 0;
@@ -38,6 +35,7 @@ public class ValidPalindrome_125 {
         String s2 = "race a car";
 
         ValidPalindrome_125 validPalindrome_125 = new ValidPalindrome_125();
+        System.out.println(validPalindrome_125.isPalindrome(s1));
         System.out.println(validPalindrome_125.isPalindrome(s2));
     }
 }
