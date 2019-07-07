@@ -73,7 +73,7 @@ public class WordLadder_127 {
         if ((beginWord == null || endWord == null) || beginWord.equals(endWord))
             return 0;
 
-        int count = 0;
+        int stringCount = 0;
         //解决重复单词问题
         Set<String> list = new HashSet<>(wordList);
         Set<String> set = new HashSet<>();
@@ -96,10 +96,10 @@ public class WordLadder_127 {
             }
             if (temp.size() == 0)
                 return 0;
-            count++;
+            stringCount++;
             set = temp;
         }
-        return count+1;
+        return stringCount+1;
     }*/
 
 

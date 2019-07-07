@@ -8,19 +8,16 @@ public class QuickSort {
         int j = high;
 
         while (true) {
-
             while (a[i] < a[low]) {
                 i++;
                 if (i == high)
                     break;
             }
-
             while (a[low] < a[j]) {
                 j--;
                 if (j == low)
                     break;
             }
-
             if (i >= j) break;
             this.exchange(a, i, j);
         }

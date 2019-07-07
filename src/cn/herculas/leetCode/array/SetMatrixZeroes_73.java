@@ -1,44 +1,25 @@
 package cn.herculas.leetCode.array;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SetMatrixZeroes_73 {
     public void setZeroes(int[][] matrix) {
-        List<Integer> row = new ArrayList<>();
-        List<Integer> col = new ArrayList<>();
+        int[] indexRow = new int[matrix.length];
+        int[] indexCol = new int[matrix[0].length];
 
-        int sizeRow = matrix.length;
-
-        if (sizeRow == 0) {
-            return;
-        }
-
-        int sizeCol = matrix[0].length;
-
-        int count = 0;
-        for (int i = 0; i < sizeRow; i++) {
-            for (int j = 0; j < sizeCol; j++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
-                    row.add(i);
-                    col.add(j);
-                    count++;
+                    indexRow[i] = 1;
+                    indexCol[j] = 1;
                 }
             }
         }
 
-        for (int i = 0; i < count; i++) {
-            setRowToZeros(row.get(i), matrix, sizeCol);
-            setColToZeros(col.get(i), matrix, sizeRow);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (indexRow[i] == 1 || indexCol[j] == 1)
+                    matrix[i][j] = 0;
+            }
         }
-    }
-
-    private void setRowToZeros(int row, int[][] matrix, int sizeY) {
-        for (int i = 0; i < sizeY; i++) matrix[row][i] = 0;
-    }
-
-    private void setColToZeros(int col, int[][] matrix, int sizeX) {
-        for (int i = 0; i < sizeX; i++) matrix[i][col] = 0;
     }
 
     public static void main(String[] args) {

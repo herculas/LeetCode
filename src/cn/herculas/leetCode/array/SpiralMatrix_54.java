@@ -5,11 +5,9 @@ import java.util.List;
 
 public class SpiralMatrix_54 {
     public List<Integer> spiralOrder(int[][] matrix) {
-        if (matrix.length == 0 || matrix[0].length == 0) {
-            return new ArrayList<>();
-        }
 
         List<Integer> result = new ArrayList<>();
+        if (matrix.length == 0 || matrix[0].length == 0) return result;
 
         int upperBound = 0;
         int lowerBound = matrix.length - 1;

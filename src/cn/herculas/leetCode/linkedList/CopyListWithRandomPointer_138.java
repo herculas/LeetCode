@@ -37,9 +37,22 @@ public class CopyListWithRandomPointer_138 {
     }
 
     public static void main(String[] args) {
-        RandomListNode r1 = new RandomListNode(-1);
-        r1.next = null;
-        r1.random = null;
+        RandomListNode r1 = new RandomListNode(1);
+        RandomListNode r2 = new RandomListNode(2);
+        RandomListNode r3 = new RandomListNode(3);
+        RandomListNode r4 = new RandomListNode(4);
+        RandomListNode r5 = new RandomListNode(5);
+
+        r1.next = r2;
+        r2.next = r3;
+        r3.next = r4;
+        r4.next = r5;
+
+        r1.random = r3;
+        r2.random = r5;
+        r3.random = null;
+        r4.random = r2;
+        r5.random = null;
 
         CopyListWithRandomPointer_138 copyListWithRandomPointer_138 = new CopyListWithRandomPointer_138();
         RandomListNode randomListNode = copyListWithRandomPointer_138.copyRandomList(r1);
